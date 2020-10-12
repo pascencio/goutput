@@ -4,7 +4,9 @@ Simple CLI tool for formated STDOUT/STDERR handling.
 
 ## Getting started
 
-First you must clone this repository and the following command:
+### From sources
+
+You cant build from sources cloning this repository and runing the following command:
 
 ```shell
 go build -o gout
@@ -19,6 +21,16 @@ Then in the same directory run your builded binary:
 Finally you will get:
 
 `[DEBUG]: Some message: '1' and '2'`
+
+## From binaries
+
+Download release versión, then unzip it. Finally move the binary to `/usr/bin` directory.
+
+To test if all works, run this:
+
+```shell
+gout -d -m "Some message: '{}' and '{}'" -p "1" -p "2"
+```
 
 ## Developing
 
