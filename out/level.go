@@ -1,5 +1,7 @@
 package out
 
+import "os"
+
 const levelErrorValue int = 3
 const levelWarnValue int = 2
 const levelInfoValue int = 1
@@ -122,4 +124,20 @@ func ArgumentToLevel(a map[string][]string) (l Level, e bool) {
 	}
 	e = false
 	return l, e
+}
+
+// MustBePrinted ...
+func MustBePrinted(l Level) bool {
+	var v string
+	var e bool
+	var level Level
+	v, e = os.LookupEnv("GOUT_LEVEL")
+	if !e {
+		return true
+	}
+	level, e = StringToLevel(v)
+	if !e {
+		return false
+	}
+	return l.GetValue() >= level.GetValue()
 }

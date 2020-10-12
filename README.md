@@ -13,7 +13,7 @@ go build -o gout
 Then in the same directory run your builded binary:
 
 ```shell
-./gout -d -m "Some message: '{}' and '{}'" -p 1 -p 2
+./gout -d -m "Some message: '{}' and '{}'" -p "1" -p "2"
 ```
 
 Finally you will get:

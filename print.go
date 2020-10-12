@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 	"strings"
+	"time"
 
 	"github.com/pascencio/goutput/args"
 	"github.com/pascencio/goutput/out"
@@ -31,8 +32,12 @@ func PrintWithArgs(a []string) (m string, s *os.File) {
 
 // Print ...
 func Print(c out.Command) (m string, s *os.File) {
+	if !out.MustBePrinted(c.Level) {
+		return "", nil
+	}
 	f := formatWithPlaceholders(c.Message, c.Placeholders)
-	m = fmt.Sprintf("[%s]: %s\n", c.Level.GetName(), f)
+	d := time.Now().Format("2006-01-01 15:04:05.000")
+	m = fmt.Sprintf("[%s] - [%-5s]: %s\n", d, c.Level.GetName(), f)
 	s = os.Stdout
 	error := out.LevelError{}
 	if c.Level.GetValue() == error.GetValue() {
