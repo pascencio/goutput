@@ -5,5 +5,5 @@ import (
 )
 
 func main() {
-	print(os.Args)
+	PrintWithArgs(os.Args)
 }

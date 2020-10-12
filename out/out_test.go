@@ -1,13 +1,15 @@
 package out
 
 import (
-	"os"
 	"testing"
 )
 
 func TestCodeToLevel(t *testing.T) {
+	emptyArray := []string{}
 	debug := LevelDebug{}.GetValue()
-	l, e := ArgumentToLevel("-d")
+	l, e := ArgumentToLevel(map[string][]string{
+		"-d": emptyArray,
+	})
 	if !e {
 		t.Error("Argument DEBUG must exists")
 		t.Fail()
@@ -16,7 +18,9 @@ func TestCodeToLevel(t *testing.T) {
 		t.Error("Argument must be have a value equal to DEBUG")
 		t.Fail()
 	}
-	l, e = ArgumentToLevel("-x")
+	l, e = ArgumentToLevel(map[string][]string{
+		"-x": emptyArray,
+	})
 	if e {
 		t.Error("Argument -x mustn't exists")
 		t.Fail()
@@ -53,30 +57,4 @@ func TestStringToLevel(t *testing.T) {
 		t.Fail()
 	}
 
-}
-
-func TestPrintStdout(t *testing.T) {
-	c := Command{Level: LevelInfo{}, Message: "Hello {}", Placeholders: []string{"World!"}}
-	m, s := Print(c)
-	if s != os.Stdout {
-		t.Error("The message must be printed to the STDOUT")
-		t.Fail()
-	}
-	if m != "[INFO]: Hello World!\n" {
-		t.Error("The message must be equal to '[INFO]: Hello World!\\n'")
-		t.Fail()
-	}
-}
-
-func TestPrintStderr(t *testing.T) {
-	c := Command{Level: LevelError{}, Message: "Ups {}", Placeholders: []string{" ...Something it's wrong!"}}
-	m, s := Print(c)
-	if s != os.Stderr {
-		t.Error("The message must be printed to the ERROR")
-		t.Fail()
-	}
-	if m != "[ERROR]: Ups  ...Something it's wrong!\n" {
-		t.Error("The message must be equal to '[ERROR]: Ups  ...Something it's wrong!\\n'")
-		t.Fail()
-	}
 }

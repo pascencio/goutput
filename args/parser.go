@@ -36,7 +36,9 @@ func getAllValues(n string, a []string) (v []string) {
 func ParseArgs(a []string, n ...string) (p map[string][]string) {
 	p = map[string][]string{}
 	for _, name := range a {
-		p[name] = getAllValues(name, a)
+		if isArgument(name) {
+			p[name] = getAllValues(name, a)
+		}
 	}
 	return p
 }

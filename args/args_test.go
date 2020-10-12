@@ -68,3 +68,13 @@ func TestGetWithManyArgs(t *testing.T) {
 		t.Fail()
 	}
 }
+
+func TestUnexistentArg(t *testing.T) {
+	a := []string{"-d"}
+	o := ParseArgs(a, "-x")
+	_, ok := o["-x"]
+	if ok {
+		t.Error("Argument -x mustn't exists")
+		t.Fail()
+	}
+}

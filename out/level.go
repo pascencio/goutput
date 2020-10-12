@@ -96,20 +96,30 @@ func StringToLevel(v string) (l Level, e bool) {
 }
 
 // ArgumentToLevel ...
-func ArgumentToLevel(v string) (l Level, e bool) {
+func ArgumentToLevel(a map[string][]string) (l Level, e bool) {
 	e = true
-	switch v {
-	case levelErrorArg:
+	_, ok := a[levelErrorArg]
+	if ok {
 		l = LevelError{}
-	case levelWarnArg:
+		return l, e
+	}
+	_, ok = a[levelWarnArg]
+	if ok {
 		l = LevelWarning{}
-	case levelInfoArg:
-		l = LevelInfo{}
-	case levelDebugArg:
-		l = LevelDebug{}
-	default:
-		e = false
+		return l, e
 	}
 
+	_, ok = a[levelInfoArg]
+	if ok {
+		l = LevelInfo{}
+		return l, e
+	}
+
+	_, ok = a[levelDebugArg]
+	if ok {
+		l = LevelDebug{}
+		return l, e
+	}
+	e = false
 	return l, e
 }
