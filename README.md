@@ -46,10 +46,20 @@ go test github.com/pascencio/goutput/...
 
 ## TODO
 
+### Release 0.0.1
+
+- [x] First estable version
+
+### Release 0.0.2
+
 - [x] Add continous integration
 - [x] Add release generation
-- [x] Add date support 
-- [ ] Add standard input integration.
+- [x] Add date support
+- [x] Add output level management based on environment variable
+
+### Release 0.0.3
+
+- [ ] Add standard input integration
 - [ ] Testing for other linux distributions
-- [ ] Add argument descriptión.
+- [ ] Add argument descriptión
 - [ ] Create a logo :stuck_out_tongue_winking_eye:
