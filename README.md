@@ -4,6 +4,18 @@
 
 Simple CLI tool for formated STDOUT/STDERR handling.
 
+> Comming soon [Release 0.0.3](#release-003).
+
+- [Goutput](#goutput)
+  - [Getting started](#getting-started)
+    - [From sources](#from-sources)
+  - [From binaries](#from-binaries)
+  - [Developing](#developing)
+  - [TODO](#todo)
+    - [Release 0.0.1](#release-001)
+    - [Release 0.0.2](#release-002)
+    - [Release 0.0.3](#release-003)
+
 ## Getting started
 
 ### From sources
