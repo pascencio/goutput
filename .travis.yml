@@ -18,8 +18,8 @@ jobs:
     deploy:
       provider: releases
       api_key:
-        secure: FMuZRO5aLtWeMsxiLrvE+JiTdXxJHwqFq1iQqUjKyWZKoMOlTThx8V5+ZlmN67y5N6U+dIhfoR4phyd/jWp2JRyQlQGA6dUp3zhV+vIiQhC0gFgZZIjcADaOH8HAUDvOz+JvcPhqaVKIB3/RBhk7pb0IjsmGwcMZvR8uV6bDg5NJsWrY6YO3143/pbqQ4YC56zrN+VAGqDGy+ias5RztR3WgP2Fd6DMZEQqJFYh7XJJ1DrTZ1sBOGYfKMnQ/plpPGMRekMKdm/Nf9HBJh8JrjC+WtvFYBxhjEGBfHN0w2YT6K4YPY64v7NOXy8G9ETx6P6G0xKJGhb2+1o1dbPkPQg9gL3+ssfLRmGpBiF4k7hMbRhbxJ9BTDS2kGeYmsed2Pk9FAVXAeRAHzd8fo1OIax84wdnQPQLos7DEKrGyPOQ6pGokHL9/gXnsvWVA8BCiURTOQsuSql4/2W2wjrCXVkIN8fol+wj7bWmyki3XWUFam4MaQdX9JaD1Kg8nDRbhmgrOxTHxPu+E/t52+zZJbWg2/8q9Yja13UlUWzkB3cbnP6KFqq9X/E1BgqSA7d4KJm95XxSgEKl6M+V4Ijw1YSin3YDxcyMU0xc1lg0z+Lvekoh16LAb6dXz5fb+uFtlygYgQN9aZSXZJ3heOlRXWtiaDfoL/8sx8c0xUqd5RqQ=
+        secure: SfupjF5QTd3QYuvlNmeMBNt4rwW66CTzDZk7N6td+nYH4S2+bwwVjtYCHvWzmfW2fgdzRAJnlelJxcYUAU+7vGzOR4dBN5oDQOsewPqLFib4tuvlTKBehbHRfZOmhR93bn7JHZA0neJ09XYiU4JssIM9y6Pcz4cBok3D2ydVg/mfI8NmTYTOtCPyKYyTab4Dss8DAUKcCyq0y/1Pbv0ILYHdxrmDxret/jLzGAi0XpAcs4IF6qlxz02sBMBTXSawkA2urNLlIn/5DtEXGK3oA32WhE3/mpyMsAm+RDG6TOQVIhP5AUX3EJ9uVncQkCHZzzaVzEUM2nNUXUp0/10OmbUmGCdgNI1nVLnCApFVusngwQl3NTbx+VZqY6WH7MV4l6cfy2ja3nYn98Nvx/BGO+6rm5oeYuWW3hqm9NgyEc7p8q/M8RKU52SdBthGq9g8B85p77XgtsF7+IEW8hO4+6qgAuNJU8/lFcaEefmg1cj+cRdZ6xs9btePJ/caFHIk5VliutdUPxV29gx1SMuZq4kp9Kl0sH5yF7Bdor74OfJajOTppG5Zq2R/mA0Ac6Te+rEzLDxV6kNO9xugJo5wBcpXOhLXLAvROedYBRQtZ9Fjzx+/EMj+bgPolEMMQljHEvtyyB3y/ktCvW2GHpcJhHDT06lpMdgC/5bnNARWmcc=
       file: gout.zip
-      skip_cleanup: true
+      skip_cleanup: 'true'
       on:
         repo: pascencio/goutput
