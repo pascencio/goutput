@@ -22,4 +22,5 @@ jobs:
       file: gout.zip
       skip_cleanup: 'true'
       on:
+        tags: true
         repo: pascencio/goutput
