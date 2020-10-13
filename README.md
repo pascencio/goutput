@@ -1,5 +1,7 @@
 # Goutput
 
+[![Build Status](https://travis-ci.org/pascencio/goutput.svg?branch=master)](https://travis-ci.org/pascencio/goutput)
+
 Simple CLI tool for formated STDOUT/STDERR handling.
 
 ## Getting started
@@ -44,6 +46,10 @@ go test github.com/pascencio/goutput/...
 
 ## TODO
 
-- [ ] Add continous integration
-- [ ] Add release generation
-- [ ] Add date support 
+- [x] Add continous integration
+- [x] Add release generation
+- [x] Add date support 
+- [ ] Add standard input integration.
+- [ ] Testing for other linux distributions
+- [ ] Add argument descriptión.
+- [ ] Create a logo :stuck_out_tongue_winking_eye:
