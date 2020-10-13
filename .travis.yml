@@ -15,12 +15,12 @@ jobs:
     - stage: build
       script: go build -o gout
     - stage: deploy
-      script: zip gout-$TRAVIS_TAG.zip gout
+      script: zip gout.zip gout
       deploy:
         provider: releases
         api_key:
           secure: FMuZRO5aLtWeMsxiLrvE+JiTdXxJHwqFq1iQqUjKyWZKoMOlTThx8V5+ZlmN67y5N6U+dIhfoR4phyd/jWp2JRyQlQGA6dUp3zhV+vIiQhC0gFgZZIjcADaOH8HAUDvOz+JvcPhqaVKIB3/RBhk7pb0IjsmGwcMZvR8uV6bDg5NJsWrY6YO3143/pbqQ4YC56zrN+VAGqDGy+ias5RztR3WgP2Fd6DMZEQqJFYh7XJJ1DrTZ1sBOGYfKMnQ/plpPGMRekMKdm/Nf9HBJh8JrjC+WtvFYBxhjEGBfHN0w2YT6K4YPY64v7NOXy8G9ETx6P6G0xKJGhb2+1o1dbPkPQg9gL3+ssfLRmGpBiF4k7hMbRhbxJ9BTDS2kGeYmsed2Pk9FAVXAeRAHzd8fo1OIax84wdnQPQLos7DEKrGyPOQ6pGokHL9/gXnsvWVA8BCiURTOQsuSql4/2W2wjrCXVkIN8fol+wj7bWmyki3XWUFam4MaQdX9JaD1Kg8nDRbhmgrOxTHxPu+E/t52+zZJbWg2/8q9Yja13UlUWzkB3cbnP6KFqq9X/E1BgqSA7d4KJm95XxSgEKl6M+V4Ijw1YSin3YDxcyMU0xc1lg0z+Lvekoh16LAb6dXz5fb+uFtlygYgQN9aZSXZJ3heOlRXWtiaDfoL/8sx8c0xUqd5RqQ=
-        file: gout-$TRAVIS_TAG.zip
+        file: gout.zip
         on:
           tags: true
         skip_cleanup: "true"
