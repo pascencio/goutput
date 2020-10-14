@@ -23,7 +23,7 @@ func formatWithPlaceholders(m string, p []string) (f string) {
 
 // PrintVersion ...
 func PrintVersion() (m string, s *os.File) {
-	m = fmt.Sprintf("Goutput version %s", VERSION)
+	m = fmt.Sprintf("Goutput version %s\n", VERSION)
 	s = os.Stdout
 	fmt.Fprintf(s, m)
 	return m, s
