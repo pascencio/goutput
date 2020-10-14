@@ -7,6 +7,7 @@ Simple CLI tool for formated STDOUT/STDERR handling.
 > Comming soon [Release 0.0.3](#release-003).
 
 - [Goutput](#goutput)
+  - [Installation](#installation)
   - [Getting started](#getting-started)
     - [From sources](#from-sources)
   - [From binaries](#from-binaries)
@@ -15,6 +16,24 @@ Simple CLI tool for formated STDOUT/STDERR handling.
     - [Release 0.0.1](#release-001)
     - [Release 0.0.2](#release-002)
     - [Release 0.0.3](#release-003)
+
+## Installation
+
+Execute the following command to intall the latest version.
+
+```shell
+curl -L -o gout.zip https://github.com/pascencio/goutput/releases/download/0.3.2/gout-0.3.2.zip && \
+unzip gout.zip && \
+sudo mv gout /usr/bin && \
+sudo chmod +x /usr/bin/gout && \
+gout --version
+```
+
+Then you will see a output message like this:
+
+```shell
+Goutput version 0.3.2
+```
 
 ## Getting started
 
@@ -34,7 +53,7 @@ Then in the same directory run your builded binary:
 
 Finally you will get:
 
-`[DEBUG]: Some message: '1' and '2'`
+`[2020-10-10 22:58:40.164] - [DEBUG]: Some message: '1' and '2'`
 
 ## From binaries
 
