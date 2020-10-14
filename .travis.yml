@@ -7,17 +7,22 @@ branches:
 jobs:
   include:
     - stage: test
-      script: go test github.com/pascencio/goutput/...
+      script:
+        - echo "Running unit testing"
+        - go test github.com/pascencio/goutput/...
+    - stage: build
+      script:
+        - echo "Building release package"
+        - find . -name print.go | xargs sed -r -i "s/(const\sVERSION\s?\=\s?\")(no-version)(\")/\1${TRAVIS_TAG}\3/"
+        - go build -o gout
     - stage: deploy
       addons:
         apt:
           update: true
       script:
         - sudo apt-get -y install zip
-        - find . -name print.go | xargs sed -r -i "s/(const\sVERSION\s?\=\s?\")(no-version)(\")/\1${TRAVIS_TAG}\3/"
-        - go build -o gout
         - zip gout-${TRAVIS_TAG}.zip gout
-        - echo "Deploying release ${TRAVIS_TAG}"
+        - echo "Deploying new release ${TRAVIS_TAG}"
       deploy:
         provider: releases
         overwrite: true
