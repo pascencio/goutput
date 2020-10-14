@@ -2,25 +2,29 @@ language: go
 os: linux
 branches:
   only:
-  - master
+    - master
+    - /^[0-9]{1,2}\.[0-9]{1,2}\.[0-9]{1,2}\-?(beta|alpha)?$/
 jobs:
   include:
-  - stage: test
-    script: go test github.com/pascencio/goutput/...
-  - stage: deploy
-    addons:
-      apt:
-        update: true
-    script:
-    - sudo apt-get -y install zip
-    - go build -o gout
-    - zip gout.zip gout
-    deploy:
-      provider: releases
-      api_key:
-        secure: SfupjF5QTd3QYuvlNmeMBNt4rwW66CTzDZk7N6td+nYH4S2+bwwVjtYCHvWzmfW2fgdzRAJnlelJxcYUAU+7vGzOR4dBN5oDQOsewPqLFib4tuvlTKBehbHRfZOmhR93bn7JHZA0neJ09XYiU4JssIM9y6Pcz4cBok3D2ydVg/mfI8NmTYTOtCPyKYyTab4Dss8DAUKcCyq0y/1Pbv0ILYHdxrmDxret/jLzGAi0XpAcs4IF6qlxz02sBMBTXSawkA2urNLlIn/5DtEXGK3oA32WhE3/mpyMsAm+RDG6TOQVIhP5AUX3EJ9uVncQkCHZzzaVzEUM2nNUXUp0/10OmbUmGCdgNI1nVLnCApFVusngwQl3NTbx+VZqY6WH7MV4l6cfy2ja3nYn98Nvx/BGO+6rm5oeYuWW3hqm9NgyEc7p8q/M8RKU52SdBthGq9g8B85p77XgtsF7+IEW8hO4+6qgAuNJU8/lFcaEefmg1cj+cRdZ6xs9btePJ/caFHIk5VliutdUPxV29gx1SMuZq4kp9Kl0sH5yF7Bdor74OfJajOTppG5Zq2R/mA0Ac6Te+rEzLDxV6kNO9xugJo5wBcpXOhLXLAvROedYBRQtZ9Fjzx+/EMj+bgPolEMMQljHEvtyyB3y/ktCvW2GHpcJhHDT06lpMdgC/5bnNARWmcc=
-      file: gout.zip
-      skip_cleanup: 'true'
-      on:
-        tags: true
-        repo: pascencio/goutput
+    - stage: test
+      script: go test github.com/pascencio/goutput/...
+    - stage: deploy
+      addons:
+        apt:
+          update: true
+      script:
+        - sudo apt-get -y install zip
+        - find . -name print.go | xargs sed -r -i "s/(const\sVERSION\s?\=\s?\")(no-version)(\")/\1${TRAVIS_TAG}\3/"
+        - go build -o gout
+        - zip gout-${TRAVIS_TAG}.zip gout
+        - echo "Deploying release ${TRAVIS_TAG}"
+      deploy:
+        provider: releases
+        overwrite: true
+        api_key:
+          secure: SfupjF5QTd3QYuvlNmeMBNt4rwW66CTzDZk7N6td+nYH4S2+bwwVjtYCHvWzmfW2fgdzRAJnlelJxcYUAU+7vGzOR4dBN5oDQOsewPqLFib4tuvlTKBehbHRfZOmhR93bn7JHZA0neJ09XYiU4JssIM9y6Pcz4cBok3D2ydVg/mfI8NmTYTOtCPyKYyTab4Dss8DAUKcCyq0y/1Pbv0ILYHdxrmDxret/jLzGAi0XpAcs4IF6qlxz02sBMBTXSawkA2urNLlIn/5DtEXGK3oA32WhE3/mpyMsAm+RDG6TOQVIhP5AUX3EJ9uVncQkCHZzzaVzEUM2nNUXUp0/10OmbUmGCdgNI1nVLnCApFVusngwQl3NTbx+VZqY6WH7MV4l6cfy2ja3nYn98Nvx/BGO+6rm5oeYuWW3hqm9NgyEc7p8q/M8RKU52SdBthGq9g8B85p77XgtsF7+IEW8hO4+6qgAuNJU8/lFcaEefmg1cj+cRdZ6xs9btePJ/caFHIk5VliutdUPxV29gx1SMuZq4kp9Kl0sH5yF7Bdor74OfJajOTppG5Zq2R/mA0Ac6Te+rEzLDxV6kNO9xugJo5wBcpXOhLXLAvROedYBRQtZ9Fjzx+/EMj+bgPolEMMQljHEvtyyB3y/ktCvW2GHpcJhHDT06lpMdgC/5bnNARWmcc=
+        file: ${TRAVIS_BUILD_DIR}/gout-${TRAVIS_TAG}.zip
+        skip_cleanup: true
+        on:
+          tags: true
+          repo: pascencio/goutput

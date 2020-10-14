@@ -10,6 +10,9 @@ import (
 	"github.com/pascencio/goutput/out"
 )
 
+// VERSION ...
+const VERSION = "no-version"
+
 func formatWithPlaceholders(m string, p []string) (f string) {
 	f = strings.Trim(m, "\"")
 	for _, ph := range p {
@@ -18,9 +21,20 @@ func formatWithPlaceholders(m string, p []string) (f string) {
 	return f
 }
 
+// PrintVersion ...
+func PrintVersion() (m string, s *os.File) {
+	m = fmt.Sprintf("Goutput version %s", VERSION)
+	s = os.Stdout
+	fmt.Fprintf(s, m)
+	return m, s
+}
+
 // PrintWithArgs ...
 func PrintWithArgs(a []string) (m string, s *os.File) {
-	p := args.ParseArgs(a, "-d", "-i", "-e", "-w", "-m", "-p")
+	p := args.ParseArgs(a, "-d", "-i", "-e", "-w", "-m", "-p", "--version")
+	if _, ok := p["--version"]; ok && len(p) == 1 {
+		return PrintVersion()
+	}
 	l, _ := out.ArgumentToLevel(p)
 	c := out.Command{
 		Level:        l,

@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 	"regexp"
+	"strings"
 	"testing"
 
 	"github.com/pascencio/goutput/out"
@@ -93,6 +94,21 @@ func TestMustBePrinted(t *testing.T) {
 	}
 	if !matchLevelAndMessage(m, levelDebug, messagePrintMe) {
 		t.Error(fmt.Sprintf("The message must be equal to '[%-5s]: %s'", levelDebug, messagePrintMe))
+		t.Fail()
+	}
+}
+
+func TestGetVersion(t *testing.T) {
+	a := []string{"--version"}
+	m, s := PrintWithArgs(a)
+
+	if s != os.Stdout {
+		t.Error("The message must be printed to the STDOUT")
+		t.Fail()
+	}
+
+	if !strings.Contains(m, VERSION) {
+		t.Error(fmt.Sprintf("Version must be %s", VERSION))
 		t.Fail()
 	}
 }
