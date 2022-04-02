@@ -4,8 +4,6 @@
 
 Simple CLI tool for formated STDOUT/STDERR handling.
 
-> Comming soon [Release 0.0.3](#release-003).
-
 - [Goutput](#goutput)
   - [Installation](#installation)
   - [Getting started](#getting-started)
@@ -88,7 +86,7 @@ go test github.com/pascencio/goutput/...
 - [x] Add date support
 - [x] Add output level management based on environment variable
 
-### Release 0.0.3
+### Release 0.4.0
 
 - [ ] Add standard input integration
 - [ ] Testing for other linux distributions
