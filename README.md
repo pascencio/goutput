@@ -13,7 +13,7 @@ Simple CLI tool for formated STDOUT/STDERR handling.
   - [TODO](#todo)
     - [Release 0.0.1](#release-001)
     - [Release 0.0.2](#release-002)
-    - [Release 0.0.3](#release-003)
+    - [Release 0.4.0](#release-040)
 
 ## Installation
 
